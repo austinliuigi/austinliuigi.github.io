@@ -18,20 +18,31 @@ li {
 .header {
 	font-size: 50px;
 	font-family: "Consolas";
+	margin-bottom: 150px;
 }
 
-.two-columns {
+.four-columns {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: auto 70px 70px auto;
 }
 
-.eyeball {
-	border: 1px solid black;
+.left-eyeball {
+	border: 2px solid black;
 	width: 50px;
 	height: 50px;
+	margin-left: 8px;
+}
+
+.right-eyeball {
+	border: 2px solid black;
+	width: 50px;
+	height: 50px;
+	margin-left: 8px;
 }
 
 .mouth {
 	border: 5px solid red;
+	width: 200px;
+	height: 50px;
 }
 
