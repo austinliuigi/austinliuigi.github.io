@@ -1,11 +1,37 @@
 ul {
-	list-style-type: none;	/* remove bullet points */
+	list-style-type: none;		/* remove bullet points */
 	margin: 0;				
 	padding: 0;				
-	position: fixed;		/* make sidebar static upon scroll */
-	width: 5%;				/* make sidebar fill up 15% of screen horizontally */
-	height: 100%;			/* make sidebar span entire site vertically */
-	background-color: #f1f1f1;
+	position: fixed;			/* make sidebar static upon scroll */
+	width: 5%;				/* set width */
+	height: 100%;				/* full height */
+	background-color: #f1f1f1;	/* light gray */
+	left: 0;					/* align left */
+	top: 0;						/* align top */
 }
 
-	
+li {
+	padding-top: 150%;
+	padding-left: 35%;
+}
+
+.header {
+	font-size: 50px;
+	font-family: "Consolas";
+}
+
+.two-columns {
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+.eyeball {
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+}
+
+.mouth {
+	border: 5px solid red;
+}
+
