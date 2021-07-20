@@ -1,48 +1,230 @@
-ul {
-	list-style-type: none;		/* remove bullet points */
-	margin: 0;				
-	padding: 0;				
-	position: fixed;			/* make sidebar static upon scroll */
-	width: 5%;				/* set width */
-	height: 100%;				/* full height */
-	background-color: #f1f1f1;	/* light gray */
-	left: 0;					/* align left */
-	top: 0;						/* align top */
+body {
+    font-family: 'Courier New', monospace;
+    height: 100%;
+    margin: 0;
 }
 
-li {
-	padding-top: 150%;
-	padding-left: 35%;
+#mainroom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  transition: transform 2s;
 }
 
-.header {
-	font-size: 50px;
-	font-family: "Consolas";
-	margin-bottom: 150px;
+.wrapper {
+  position:fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
 }
 
-.four-columns {
-	display: grid;
-	grid-template-columns: auto 70px 70px auto;
+@keyframes wipe{
+  0% {transform: scale(0, 0.25);}
+  50% {transform: scale(1, 0.25); color: black;}
+  100% {transform: scale(1, 1); color: white;}
 }
 
-.left-eyeball {
-	border: 2px solid black;
-	width: 50px;
-	height: 50px;
-	margin-left: 8px;
+#greeting {
+  color: black;
+  font-size: 50px;
+  background-color: black;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  border-radius: 25px;
+  animation: wipe 1.25s forwards;
+  display: grid;
+  place-items: center;
 }
 
-.right-eyeball {
-	border: 2px solid black;
-	width: 50px;
-	height: 50px;
-	margin-left: 8px;
+@keyframes slidedown {
+  50% {transform: translate(0, 0); color: white;}
+  100% {transform: translate(0, 2.5em); color: black;}
 }
 
-.mouth {
-	border: 5px solid red;
-	width: 200px;
-	height: 50px;
+#name {
+  position: relative;
+  color: white;
+  font-size: 25px;
+  animation: slidedown 1.25s forwards;
+}
+
+#tomato {
+  position: fixed;
+  bottom: 100%;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  transition: transform 2s;
+}
+
+.edge {
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 1s;
+  z-index: 99;
+}
+
+.edge:hover {
+  opacity: 1;
+}
+
+.arrow {
+  color: #636363;
+  font-family: serif;
+  font-size: 40px;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 100;
+}
+
+.arrow:hover + .edge {
+  opacity: 1;
+}
+
+#north {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 7rem;
+  background-image: linear-gradient(#dedede, white);
+}
+
+#east {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 7rem;
+  background-image: linear-gradient(to left, #dedede, white);
+}
+
+#south {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 7rem;
+  background-image: linear-gradient(to top, #dedede, white);
+}
+
+#west {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 7rem;
+  background-image: linear-gradient(to right, #dedede, white);
+}
+
+@media (min-width: 767px) {
+
+  #up {
+    position: fixed;
+    left: 0;
+    top: 39%;
+    width: 100%;
+    transform: translate(0.085em, 0);
+    writing-mode: vertical-rl;
+    display: grid;
+    align-items: center;
+  }
+
+  #right {
+    position: fixed;
+    right: 42%;
+    top: 0;
+    height: 100%;
+    transform: translate(0, -0.8em);
+    display: grid;
+    align-items: center;
+  }
+
+  #down {
+    position: fixed;
+    left: 0;
+    bottom: 45%;
+    width: 100%;
+    transform: translate(0.085em, 0);
+    writing-mode: vertical-rl;
+    display: grid;
+    align-items: center;
+  }
+
+  #left {
+    position: fixed;
+    left: 42%;
+    top: 0;
+    height: 100%;
+    transform: translate(0, -0.8em);
+    display: grid;
+    align-items: center;
+  }
+
+}
+
+
+/* Arrow Animations */
+
+@keyframes shoot_up {
+  25% {opacity: 1;; top: 39%}
+  100% {opacity: 1; top: 2rem;}
+}
+
+.animate_up {
+  animation: shoot_up 2s forwards;
+}
+
+@keyframes shoot_right {
+  25% {opacity: 1;; right: 42%}
+  100% {opacity: 1; right: 2rem;}
+}
+
+.animate_right {
+  animation: shoot_right 2s forwards;
+}
+
+@keyframes shoot_down {
+  25% {opacity: 1;; bottom: 45%}
+  100% {opacity: 1; bottom: 2rem;}
+}
+
+.animate_down {
+  animation: shoot_down 2s forwards;
+}
+
+@keyframes shoot_left {
+  25% {opacity: 1;; left: 42%}
+  100% {opacity: 1; left: 2rem;}
+}
+
+.animate_left {
+  animation: shoot_left 2s forwards;
+}
+
+
+/* Room Transitions */
+
+.exit_bottom, .enter_top {
+  transform: translate(0, 100%);
+}
+
+.exit_left, .enter_right {
+  transform: translate(-100%, 0);
+}
+
+.exit_top, .enter_bottom {
+  transform: translate(0, -100%);
+}
+
+.exit_right, .enter_left {
+  transform: translate(100%, 0);
 }
 
