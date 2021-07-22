@@ -67,7 +67,49 @@ body {
 }
 
 
-/* Edges and Arrows */
+/* Edges */
+
+.edge {
+  position: fixed;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.edge:not(.stop_hover):hover > .border {
+  opacity: 1;
+}
+
+.edge.stop_hover {
+  cursor: default;
+}
+
+#top {
+  left: 0;
+  top: 36%;
+  width: 100%;
+  height: 7rem;
+}
+
+#right {
+  right: 41%;
+  top: 0;
+  height: 100%;
+  width: 7rem;
+}
+
+#bottom {
+  left: 0;
+  bottom: 40%;
+  width: 100%;
+  height: 7rem;
+}
+
+#left {
+  left: 41%;
+  top: 0;
+  height: 100%;
+  width: 7rem;
+}
 
 .border {
   position: absolute;
@@ -97,64 +139,38 @@ body {
 }
 
 .arrow {
-  position: fixed;
-  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   color: #636363;
   font-family: serif;
   font-size: 40px;
   display: grid;
   place-items: center;
-  opacity: 0;
 }
 
-.arrow:not(.stop_hover):hover > .border {
-  opacity: 1;
+#up_arrow {
+  transform: translate(0.085em, -1rem);
+  writing-mode: vertical-rl;
 }
 
-.arrow.stop_hover {
-  cursor: default;
+#right_arrow {
+  transform: translate(1rem, -0.8em);
 }
 
-@media (min-width: 767px) {
+#down_arrow {
+  transform: translate(0.085em, 1rem);
+  writing-mode: vertical-rl;
+}
 
-  #up {
-    left: 0;
-    top: 36%;
-    width: 100%;
-    height: 7rem;
-    transform: translate(0.085em, 0);
-    writing-mode: vertical-rl;
-  }
-
-  #right {
-    right: 40%;
-    top: 0;
-    height: 100%;
-    width: 7rem;
-    transform: translate(0, -0.8em);
-  }
-
-  #down {
-    left: 0;
-    bottom: 40%;
-    width: 100%;
-    height: 7rem;
-    transform: translate(0.085em, 0);
-    writing-mode: vertical-rl;
-  }
-
-  #left {
-    left: 40%;
-    top: 0;
-    height: 100%;
-    width: 7rem;
-    transform: translate(0, -0.8em);
-  }
-
+#left_arrow {
+  transform: translate(-1rem, -0.8em);
 }
 
 .disabler {
-  transition: opacity 0.5s;
+  transition: opacity 1s;
 }
 
 .disable {
@@ -179,7 +195,7 @@ body {
 }
 
 @keyframes shoot_right {
-  25% {opacity: 1; right: 40%}
+  25% {opacity: 1; right: 41%}
   100% {opacity: 1; right: 0rem;}
 }
 
@@ -197,7 +213,7 @@ body {
 }
 
 @keyframes shoot_left {
-  25% {opacity: 1; left: 40%}
+  25% {opacity: 1; left: 41%}
   100% {opacity: 1; left: 0rem;}
 }
 

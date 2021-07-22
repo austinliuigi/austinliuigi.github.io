@@ -48,10 +48,10 @@
                 mainroom = document.querySelector('#mainroom');
                 greeting = document.querySelector('#greeting');
 
-                // Initialize Edge and Arrow Variables
-                top_edge = document.querySelector('#up');
+                // Initialize Edge Variables
+                top_edge = document.querySelector('#top');
                 right_edge = document.querySelector('#right');
-                bottom_edge = document.querySelector('#down');
+                bottom_edge = document.querySelector('#bottom');
                 left_edge = document.querySelector('#left');
 
                 // Initialize Edge Disablers
@@ -71,7 +71,7 @@
                     setTimeout(function() {left_edge.classList.add('animate_left');}, 1500);
                 });
 
-                // Enable Edges and Arrows After Arrow Animations Ends
+                // Enable Edges
                 left_edge.addEventListener('animationend', function() {
                     for (let i = 0; i < disablers.length; i++) {
                         disablers[i].classList.remove('disable_opaque');
@@ -88,7 +88,7 @@
                     // Left Edge
                 left_edge.addEventListener('click', moveLeft);
 
-                // Re-enable Edges and Arrows After Room Change
+                // Re-enable Edges After Room Change
                 mainroom.addEventListener('transitionend', enableEdgesAndArrows);
 
                 // Re-enable Hover After Room Change
@@ -98,7 +98,7 @@
             function moveUp() {
                 disableEdgesAndArrows();
 
-                // Stop Hover on top Edge/Arrow
+                // Stop Hover on Top Edge
                 top_edge.classList.add('stop_hover');
 
                 // Update Previous Room
@@ -121,7 +121,7 @@
             function moveRight() {
                 disableEdgesAndArrows();
 
-                // Stop Hover on Right Edge/Arrow
+                // Stop Hover on Right Edge
                 right_edge.classList.add('stop_hover');
 
                 // Update Previous Room
@@ -144,7 +144,7 @@
             function moveDown() {
                 disableEdgesAndArrows();
 
-                // Stop Hover on Bottom Edge/Arrow
+                // Stop Hover on Bottom Edge
                 bottom_edge.classList.add('stop_hover');
 
                 // Update Previous Room
@@ -167,7 +167,7 @@
             function moveLeft() {
                 disableEdgesAndArrows();
 
-                // Stop Hover on Left Edge/Arrow
+                // Stop Hover on Left Edge
                 left_edge.classList.add('stop_hover');
 
                 // Update Previous Room
@@ -189,46 +189,50 @@
 
             function disableEdgesAndArrows() {
                 if (room == 0) {
-                    // Disable all Edges and Arrows
+                    // Disable all Edges
                     for (let i = 0; i < disablers.length; i++) {
                         disablers[i].classList.add('disable');
                     }
                 }
                 else if (room == 1) {
-                    // Disable Bottom Edge and Arrow
+                    // Disable Bottom Edge
                     bottom_disabler.classList.add('disable');
                 }
                 else if (room == 2) {
-                    // Disable Left Edge and Arrow
+                    // Disable Left Edge
                     left_disabler.classList.add('disable');
                 }
                 else if (room == 3) {
-                    // Disable Top Edge and Arrow
+                    // Disable Top Edge
                     top_disabler.classList.add('disable');
                 }
                 else {
-                    // Disable Right Edge and Arrow
+                    // Disable Right Edge
                     right_disabler.classList.add('disable');
                 }
             }
 
             function enableEdgesAndArrows() {
                 if (room == 0) {
-                    // Enable all Edges and Arrows
+                    // Enable all Edges
                     for (let i = 0; i < disablers.length; i++) {
                         disablers[i].classList.remove('disable');
                     }
                 }
                 else if (room == 1) {
+                    // Enable Bottom Edge
                     bottom_disabler.classList.remove('disable');
                 }
                 else if (room == 2) {
+                    // Enable Left Edge
                     left_disabler.classList.remove('disable');
                 }
                 else if (room == 3) {
+                    // Enable Top Edge
                     top_disabler.classList.remove('disable');
                 }
                 else {
+                    // Enable Right Edge
                     right_disabler.classList.remove('disable');
                 }
             }
@@ -271,26 +275,26 @@
 
         <!-- Edges and Arrows -->
         <div id="top_disabler" class="disabler disable_opaque">
-            <div id="up" class="arrow">
-                <b>&#8249;</b>
+            <div id="top" class="edge">
+                <div id="up_arrow" class="arrow"><b>&#8249;</b></div>
                 <div id="north" class="border"></div>
             </div>
         </div>
         <div id="right_disabler" class="disabler disable_opaque">
-            <div id="right" class="arrow">
-                <b>&#8250;</b>
+            <div id="right" class="edge">
+                <div id="right_arrow" class="arrow"><b>&#8250;</b></div>
                 <div id="east" class="border"></div>
             </div>
         </div>
         <div id="bottom_disabler" class="disabler disable_opaque">
-            <div id="down" class="arrow">
-                <b>&#8250;</b>
+            <div id="bottom" class="edge">
+                <div id="down_arrow" class="arrow"><b>&#8250;</b></div>
                 <div id="south" class="border"></div>
             </div>
         </div>
         <div id="left_disabler" class="disabler disable_opaque">
-            <div id="left" class="arrow">
-                <b>&#8249;</b>
+            <div id="left" class="edge">
+                <div id="left_arrow" class="arrow"><b>&#8249;</b></div>
                 <div id="west" class="border"></div>
             </div>
         </div>
