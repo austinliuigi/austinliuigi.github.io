@@ -67,118 +67,118 @@ body {
 }
 
 
-/* Edges and Arrows */
+/* Edges */
 
 .edge {
   cursor: pointer;
   opacity: 0;
-  transition: opacity 1s;
-  z-index: 99;
-}
-
-.edge:not(.stop_hover):hover {
-  opacity: 1;
 }
 
 .edge.stop_hover {
   cursor: default;
 }
 
-.arrow {
-  cursor: pointer;
-  color: #636363;
-  font-family: serif;
-  font-size: 40px;
-  opacity: 0;
-  z-index: 100;
-}
-
-.arrow:not(.stop_hover):hover + .edge {
+.edge:not(.stop_hover):hover > .border {
   opacity: 1;
 }
 
-.arrow.stop_hover {
-  cursor: default;
+#top_edge {
+  position: fixed;
+  left: 0;
+  top: 36%;
+  width: 100%;
+  height: 7rem;
+}
+
+#right_edge {
+  position: fixed;
+  right: 40%;
+  top: 0;
+  height: 100%;
+  width: 7rem;
+}
+
+#bottom_edge {
+  position: fixed;
+  left: 0;
+  bottom: 40%;
+  width: 100%;
+  height: 7rem;
+}
+
+#left_edge {
+  position: fixed;
+  left: 40%;
+  top: 0;
+  height: 100%;
+  width: 7rem;
+}
+
+.border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s;
+  z-index: 0;
 }
 
 #north {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 7rem;
   background-image: linear-gradient(#dedede, white);
 }
 
 #east {
-  position: fixed;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 7rem;
   background-image: linear-gradient(to left, #dedede, white);
 }
 
 #south {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 7rem;
   background-image: linear-gradient(to top, #dedede, white);
 }
 
 #west {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 7rem;
   background-image: linear-gradient(to right, #dedede, white);
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #636363;
+  font-family: serif;
+  font-size: 40px;
+  z-index: 1;
 }
 
 @media (min-width: 767px) {
 
   #up {
-    position: fixed;
-    left: 0;
-    top: 39%;
-    width: 100%;
     transform: translate(0.085em, 0);
     writing-mode: vertical-rl;
     display: grid;
-    align-items: center;
+    place-items: center;
   }
 
   #right {
-    position: fixed;
-    right: 42%;
-    top: 0;
-    height: 100%;
     transform: translate(0, -0.8em);
     display: grid;
-    align-items: center;
+    place-items: center;
   }
 
   #down {
-    position: fixed;
-    left: 0;
-    bottom: 45%;
-    width: 100%;
     transform: translate(0.085em, 0);
     writing-mode: vertical-rl;
     display: grid;
-    align-items: center;
+    place-items: center;
   }
 
   #left {
-    position: fixed;
-    left: 42%;
-    top: 0;
-    height: 100%;
     transform: translate(0, -0.8em);
     display: grid;
-    align-items: center;
+    place-items: center;
   }
 
 }
@@ -195,8 +195,8 @@ body {
 /* Arrow Animations */
 
 @keyframes shoot_up {
-  25% {opacity: 1;; top: 39%}
-  100% {opacity: 1; top: 2rem;}
+  25% {opacity: 1; top: 36%}
+  100% {opacity: 1; top: 0rem;}
 }
 
 .animate_up {
@@ -204,8 +204,8 @@ body {
 }
 
 @keyframes shoot_right {
-  25% {opacity: 1;; right: 42%}
-  100% {opacity: 1; right: 2rem;}
+  25% {opacity: 1; right: 40%}
+  100% {opacity: 1; right: 0rem;}
 }
 
 .animate_right {
@@ -213,8 +213,8 @@ body {
 }
 
 @keyframes shoot_down {
-  25% {opacity: 1;; bottom: 45%}
-  100% {opacity: 1; bottom: 2rem;}
+  25% {opacity: 1; bottom: 40%}
+  100% {opacity: 1; bottom: 0rem;}
 }
 
 .animate_down {
@@ -222,8 +222,8 @@ body {
 }
 
 @keyframes shoot_left {
-  25% {opacity: 1;; left: 42%}
-  100% {opacity: 1; left: 2rem;}
+  25% {opacity: 1; left: 40%}
+  100% {opacity: 1; left: 0rem;}
 }
 
 .animate_left {

@@ -27,19 +27,14 @@
             var mainroom;
             var greeting;
 
-            // Declare Edge and Arrow Variables
+            // Declare Edge Variables
             var top_edge;
-            var up_arrow;
             var right_edge;
-            var right_arrow;
             var bottom_edge;
-            var down_arrow;
             var left_edge;
-            var left_arrow;
 
             // Declare Edge and Arrow Arrays
             var edges = [];
-            var arrows = [];
 
             document.addEventListener('DOMContentLoaded', function() {
 
@@ -48,45 +43,36 @@
                 greeting = document.querySelector('#greeting');
 
                 // Initialize Edge and Arrow Variables
-                top_edge = document.querySelector('#north');
-                up_arrow = document.querySelector('#up');
-                right_edge = document.querySelector('#east');
-                right_arrow = document.querySelector('#right');
-                bottom_edge = document.querySelector('#south');
-                down_arrow = document.querySelector('#down');
-                left_edge = document.querySelector('#west');
-                left_arrow = document.querySelector('#left');
+                top_edge = document.querySelector('#top_edge');
+                right_edge = document.querySelector('#right_edge');
+                bottom_edge = document.querySelector('#bottom_edge');
+                left_edge = document.querySelector('#left_edge');
 
                 // Initialize Edge and Arrow Arrays
                 edges = document.querySelectorAll('.edge');
-                arrows = document.querySelectorAll('.arrow');
 
                 // Fire Arrows After Greeting Animation Ends
                 greeting.addEventListener('animationend', function() {
-                    up_arrow.classList.add('animate_up');
-                    setTimeout(function() {right_arrow.classList.add('animate_right');}, 500);
-                    setTimeout(function() {down_arrow.classList.add('animate_down');}, 1000);
-                    setTimeout(function() {left_arrow.classList.add('animate_left');}, 1500);
+                    top_edge.classList.add('animate_up');
+                    setTimeout(function() {right_edge.classList.add('animate_right');}, 500);
+                    setTimeout(function() {bottom_edge.classList.add('animate_down');}, 1000);
+                    setTimeout(function() {left_edge.classList.add('animate_left');}, 1500);
                 });
 
                 // Enable Edges and Arrows After Arrow Animations Ends
-                left_arrow.addEventListener('animationend', function() {
+                left_edge.addEventListener('animationend', function() {
                     document.querySelector('#disabler').classList.remove('disable');
                 });
 
                 // Handle Room Changes
                     // Top Edge
                 top_edge.addEventListener('click', moveUp);
-                up_arrow.addEventListener('click', moveUp);
                     // Right Edge
                 right_edge.addEventListener('click', moveRight);
-                right_arrow.addEventListener('click', moveRight);
                     // Bottom Edge
                 bottom_edge.addEventListener('click', moveDown);
-                down_arrow.addEventListener('click', moveDown);
                     // Left Edge
                 left_edge.addEventListener('click', moveLeft);
-                left_arrow.addEventListener('click', moveLeft);
 
                 // Re-enable Edges and Arrows After Room Change
                 mainroom.addEventListener('transitionend', enableEdgesAndArrows);
@@ -100,7 +86,6 @@
 
                 // Stop Hover on top Edge/Arrow
                 top_edge.classList.add('stop_hover');
-                up_arrow.classList.add('stop_hover');
 
                 // Update Previous Room
                 prevRoom = room;
@@ -124,7 +109,6 @@
 
                 // Stop Hover on Right Edge/Arrow
                 right_edge.classList.add('stop_hover');
-                right_arrow.classList.add('stop_hover');
 
                 // Update Previous Room
                 prevRoom = room;
@@ -148,7 +132,6 @@
 
                 // Stop Hover on Bottom Edge/Arrow
                 bottom_edge.classList.add('stop_hover');
-                down_arrow.classList.add('stop_hover');
 
                 // Update Previous Room
                 prevRoom = room;
@@ -172,7 +155,6 @@
 
                 // Stop Hover on Left Edge/Arrow
                 left_edge.classList.add('stop_hover');
-                left_arrow.classList.add('stop_hover');
 
                 // Update Previous Room
                 prevRoom = room;
@@ -197,29 +179,22 @@
                     for(let i = 0; i < edges.length; i++) {
                         edges[i].classList.add('disable');
                     }
-                    for(let i = 0; i < arrows.length; i++) {
-                        arrows[i].classList.add('disable');
-                    }
                 }
                 else if (room == 1) {
                     // Disable Bottom Edge and Arrow
                     bottom_edge.classList.add('disable');
-                    down_arrow.classList.add('disable');
                 }
                 else if (room == 2) {
                     // Disable Left Edge and Arrow
                     left_edge.classList.add('disable');
-                    left_arrow.classList.add('disable');
                 }
                 else if (room == 3) {
                     // Disable Top Edge and Arrow
                     top_edge.classList.add('disable');
-                    up_arrow.classList.add('disable');
                 }
                 else {
                     // Disable Right Edge and Arrow
                     right_edge.classList.add('disable');
-                    right_arrow.classLlist.add('disable');
                 }
             }
 
@@ -229,40 +204,29 @@
                     for(let i = 0; i < edges.length; i++) {
                         edges[i].classList.remove('disable');
                     }
-                    for(let i = 0; i < arrows.length; i++) {
-                        arrows[i].classList.remove('disable');
-                    }
                 }
                 else if (room == 1) {
                     bottom_edge.classList.remove('disable');
-                    down_arrow.classList.remove('disable');
                 }
                 else if (room == 2) {
                     left_edge.classList.remove('disable');
-                    left_arrow.classList.remove('disable');
                 }
                 else if (room == 3) {
                     top_edge.classList.remove('disable');
-                    up_arrow.classList.remove('disable');
                 }
                 else {
                     right_edge.classList.remove('disable');
-                    right_arrow.classLlist.remove('disable');
                 }
             }
 
             function enableHover() {
                 if (prevRoom == 1 || prevRoom == 3) {
                     top_edge.classList.remove('stop_hover');
-                    up_arrow.classList.remove('stop_hover');
                     bottom_edge.classList.remove('stop_hover');
-                    down_arrow.classList.remove('stop_hover');
                 }
                 else if (prevRoom == 2 || prevRoom == 4) {
                     right_edge.classList.remove('stop_hover');
-                    right_arrow.classList.remove('stop_hover');
                     left_edge.classList.remove('stop_hover');
-                    left_arrow.classList.remove('stop_hover');
                 }
             }
 
@@ -293,29 +257,43 @@
 
         <!-- Edges and Arrows -->
         <div id="disabler" class="disable">
-            <div id="up" class="arrow">
-                <b>&#8249;</b>
+
+            <div id="top_edge" class="edge">
+
+                <div id="up" class="arrow">
+                    <b>&#8249;</b>
+                </div>
+                <div id="north" class="border"></div>
+
             </div>
 
-            <div id="north" class="edge"></div>
+            <div id="right_edge" class="edge">
 
-            <div id="right" class="arrow">
-                <b>&#8250;</b>
+                <div id="right" class="arrow">
+                    <b>&#8250;</b>
+                </div>
+                <div id="east" class="border"></div>
+
             </div>
 
-            <div id="east" class="edge"></div>
+            <div id="bottom_edge" class="edge">
 
-            <div id="down" class="arrow">
-                <b>&#8250;</b>
+                <div id="down" class="arrow">
+                    <b>&#8250;</b>
+                </div>
+                <div id="south" class="border"></div>
+
             </div>
 
-            <div id="south" class="edge"></div>
+            <div id="left_edge" class="edge">
 
-            <div id="left" class="arrow">
-                <b>&#8249;</b>
+                <div id="left" class="arrow">
+                    <b>&#8249;</b>
+                </div>
+                <div id="west" class="border"></div>
+
             </div>
 
-            <div id="west" class="edge"></div>
         </div>
 
     </body>
