@@ -154,7 +154,7 @@ body {
 }
 
 .disabler {
-  transition: opacity 1s;
+  transition: opacity 0.5s;
 }
 
 .disable {
