@@ -4,24 +4,23 @@ body {
     margin: 0;
 }
 
+
+/* Room 0 */
+
 #mainroom {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: grid;
-  place-items: center;
   transition: transform 2s;
 }
 
 .wrapper {
-  position:fixed;
-  top: 45%;
+  position: absolute;
+  top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: grid;
-  place-items: center;
 }
 
 @keyframes wipe{
@@ -54,6 +53,9 @@ body {
   animation: slidedown 1.25s forwards;
 }
 
+
+/* Room 1 */
+
 #tomato {
   position: fixed;
   bottom: 100%;
@@ -64,6 +66,9 @@ body {
   transition: transform 2s;
 }
 
+
+/* Edges and Arrows */
+
 .edge {
   cursor: pointer;
   opacity: 0;
@@ -71,21 +76,29 @@ body {
   z-index: 99;
 }
 
-.edge:hover {
+.edge:not(.stop_hover):hover {
   opacity: 1;
 }
 
+.edge.stop_hover {
+  cursor: default;
+}
+
 .arrow {
+  cursor: pointer;
   color: #636363;
   font-family: serif;
   font-size: 40px;
-  cursor: pointer;
   opacity: 0;
   z-index: 100;
 }
 
-.arrow:hover + .edge {
+.arrow:not(.stop_hover):hover + .edge {
   opacity: 1;
+}
+
+.arrow.stop_hover {
+  cursor: default;
 }
 
 #north {
@@ -168,6 +181,14 @@ body {
     align-items: center;
   }
 
+}
+
+.disable {
+  pointer-events: none;
+}
+
+.vanish {
+  opacity: 0;
 }
 
 
