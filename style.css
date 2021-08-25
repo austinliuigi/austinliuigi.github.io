@@ -24,7 +24,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-@keyframes wipe{
+@keyframes wipehv{
   0% {transform: scale(0, 0.25);}
   50% {transform: scale(1, 0.25); color: black;}
   100% {transform: scale(1, 1); color: white;}
@@ -37,7 +37,7 @@ body {
   padding-left: 0.5em;
   padding-right: 0.5em;
   border-radius: 25px;
-  animation: wipe 1.25s forwards;
+  animation: wipehv 1.25s forwards;
   display: grid;
   place-items: center;
 }
@@ -57,16 +57,74 @@ body {
 
 /* Room 1 */
 
-#tomato {
+#aboutmeroom {
   position: fixed;
   bottom: 100%;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  transition: transform 2s;
+}
+
+#aboutmeheader {
+  color: gray;
+  font-size: 25px;
+  opacity: 0;
+}
+
+@keyframes slideup {
+  0% {transform: translate(0, 0); opacity: 0;}
+  100% {transform: translate(0, -1em); opacity: 1;}
+}
+
+.aboutmeheaderanimation {
+  animation: slideup 0.75s forwards;
+}
+
+#aboutme {
+  position: relative;
+  color: white;
+  font-size: 15px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  display: grid;
+  place-items: center;
+}
+
+@keyframes wipevh{
+  0% {width: 1rem; height: 1rem;}
+  30% {width: 1rem; height: 100%;}
+  100% {width: 100%; height: 100%;}
+}
+
+.aboutmebganimation {
+  animation: wipevh 1.25s forwards;
+}
+
+#aboutmebackground {
+  position: absolute;
+  box-sizing: border-box;
+  background-color: gray;
+  border-radius: 15px;
+  width: 1rem;
+  height: 1rem;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Room 4 */
+
+#tomato {
+  position: fixed;
+  right: 100%;
   width: 100%;
   height: 100%;
   display: grid;
   place-items: center;
   transition: transform 2s;
 }
-
 
 /* Edges */
 
@@ -86,7 +144,7 @@ body {
 
 #top_edge {
   left: 0;
-  top: 36%;
+  top: 37%;
   width: 100%;
   height: 7rem;
 }
@@ -100,7 +158,7 @@ body {
 
 #bottom_edge {
   left: 0;
-  bottom: 40%;
+  bottom: 41%;
   width: 100%;
   height: 7rem;
 }
@@ -154,7 +212,7 @@ body {
 }
 
 #up_arrow {
-  transform: translate(0.085em, -1rem);
+  transform: translate(0.075em, -1rem);
   writing-mode: vertical-rl;
 }
 
@@ -163,7 +221,7 @@ body {
 }
 
 #down_arrow {
-  transform: translate(0.085em, 1rem);
+  transform: translate(0.25em, 1rem);
   writing-mode: vertical-rl;
 }
 
@@ -172,7 +230,7 @@ body {
 }
 
 .disabler {
-  transition: opacity 1s;
+  transition: opacity 0.35s;
 }
 
 .disable {
@@ -188,7 +246,7 @@ body {
 /* Arrow Animations */
 
 @keyframes shoot_up {
-  25% {opacity: 1; top: 36%}
+  25% {opacity: 1; top: 37%}
   100% {opacity: 1; top: 0rem;}
 }
 
@@ -206,7 +264,7 @@ body {
 }
 
 @keyframes shoot_down {
-  25% {opacity: 1; bottom: 40%}
+  25% {opacity: 1; bottom: 41%}
   100% {opacity: 1; bottom: 0rem;}
 }
 
