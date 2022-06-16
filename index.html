@@ -26,7 +26,7 @@
             // Declare Content Variables
             var mainroom;
             var greeting;
-            var aboutmeroom;
+            var aboutme_room;
 
             // Declare Edge Variables
             var top_edge;
@@ -43,12 +43,17 @@
             // Declare Disablers Array
             var disablers = [];
 
+            // Declare About Me Content
+            var current_num_of_chars = 0;
+            var aboutme_text = "I'm Austin Liu, an undergraduate electrical engineering student at UCLA."
+            var typing_delay = 50;
+
             document.addEventListener('DOMContentLoaded', function() {
 
                 // Initialize Content Variables
                 mainroom = document.querySelector('#mainroom');
                 greeting = document.querySelector('#greeting');
-                aboutmeroom = document.querySelector('#aboutmeroom');
+                aboutme_room = document.querySelector('#aboutme_room');
 
                 // Initialize Edge Variables
                 top_edge = document.querySelector('#top_edge');
@@ -90,11 +95,15 @@
                     // Left Edge
                 left_edge.addEventListener('click', moveLeft);
 
-                // AboutMe Animation Handler
-                aboutmeroom.addEventListener('transitionend', function() {
-                    aboutmeheader.classList.toggle('aboutmeheaderanimation');
-                    aboutmebackground.classList.toggle('aboutmebganimation');
+                // About Me Room Handler
+                    // Initialize content-based size of wrapper
+                aboutme_size_wrapper_paragraph.innerHTML = aboutme_text;
+                    // Start typewriter effect upon first entry of room
+                aboutme_room.addEventListener('transitionend', function() {
+                    aboutme_header.classList.toggle('aboutme_header_animation');
+                    aboutme_content.classList.toggle('aboutme_content_animation');
                 });
+                aboutme_content.addEventListener('animationend', aboutmeTypingEffect);
 
                 // Re-enable Edges After Room Change
                 mainroom.addEventListener('transitionend', enableEdgesAndArrows);
@@ -115,7 +124,7 @@
                 // Move to Room 1 if in Room 0
                 if (room == 0) {
                     mainroom.classList.add('exit_bottom');
-                    document.querySelector('#aboutmeroom').classList.add('enter_top');
+                    document.querySelector('#aboutme_room').classList.add('enter_top');
                     room = 1;
                 }
                 // Move to Room 0 if in Room 3
@@ -167,7 +176,7 @@
                 // Move to Room 0 if in Room 1
                 if (room == 1) {
                     mainroom.classList.remove('exit_bottom');
-                    document.querySelector('#aboutmeroom').classList.remove('enter_top');
+                    document.querySelector('#aboutme_room').classList.remove('enter_top');
                     room = 0;
                 }
             }
@@ -256,6 +265,15 @@
                 }
             }
 
+            function aboutmeTypingEffect() {
+                if (current_num_of_chars < aboutme_text.length)
+                {
+                    aboutme_content_paragraph.innerHTML += aboutme_text.charAt(current_num_of_chars);
+                    current_num_of_chars++;
+                    setTimeout(aboutmeTypingEffect, typing_delay);
+                }
+            }
+
         </script>
 
     </head>
@@ -277,15 +295,17 @@
         </div>
 
         <!-- Room 1 Contents -->
-        <div id="aboutmeroom">
-            <div id="aboutmeheader">
+        <div id="aboutme_room">
+            <div id="aboutme_header">
                 <b>About Me</b>
             </div>
-            <div id="aboutme">
-                <p>
-                 I'm Austin Liu, an undergraduate electrical engineering student at UCLA.
+            <div id="aboutme_size_wrapper">
+                <p id="aboutme_size_wrapper_paragraph">
                 </p>
-                <div id="aboutmebackground"></div>
+                <div id="aboutme_content">
+                    <p id="aboutme_content_paragraph">
+                    </p>
+                </div>
             </div>
         </div>
 

@@ -57,7 +57,7 @@ body {
 
 /* Room 1 */
 
-#aboutmeroom {
+#aboutme_room {
   position: fixed;
   bottom: 100%;
   width: 100%;
@@ -68,7 +68,7 @@ body {
   transition: transform 2s;
 }
 
-#aboutmeheader {
+#aboutme_header {
   color: gray;
   font-size: 25px;
   opacity: 0;
@@ -79,11 +79,11 @@ body {
   100% {transform: translate(0, -1em); opacity: 1;}
 }
 
-.aboutmeheaderanimation {
+.aboutme_header_animation {
   animation: slideup 0.75s forwards;
 }
 
-#aboutme {
+#aboutme_size_wrapper {
   position: relative;
   color: white;
   font-size: 15px;
@@ -99,19 +99,20 @@ body {
   100% {width: 100%; height: 100%;}
 }
 
-.aboutmebganimation {
+.aboutme_content_animation {
   animation: wipevh 1.25s forwards;
 }
 
-#aboutmebackground {
+#aboutme_content {
   position: absolute;
   box-sizing: border-box;
   background-color: gray;
   border-radius: 15px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   width: 1rem;
   height: 1rem;
   overflow: hidden;
-  z-index: -1;
 }
 
 /* Room 4 */
